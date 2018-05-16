@@ -1,0 +1,7 @@
+{
+  "name": "urm",
+  "version": "1.0.0",
+  "description": "Unlimited Register Machine emulator",
+  "main": "index.js",
+  "license": "MIT"
+}
