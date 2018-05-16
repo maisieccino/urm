@@ -121,6 +121,7 @@ Pass initial register values in as arguments. Each value must be a natural numbe
 Execution steps are printed to STDERR. Output (value of register 1) is printed to
 STDOUT on termination.
   `);
+  process.exit(0);
 }
 
 process.stdin.setEncoding("utf-8");
@@ -168,4 +169,5 @@ rl.on("close", () => {
     }
   }
   process.stdout.write(`${getRegister(1)}`);
+  process.exit(0);
 });
