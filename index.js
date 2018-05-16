@@ -139,6 +139,7 @@ rl.on("close", () => {
   let line = 0;
   while (line < instructions.length && line >= 0) {
     const instr = instructions[line];
+    const l = line;
     line = line + 1;
     switch (instr.type) {
       case Instruction.J:
@@ -146,24 +147,28 @@ rl.on("close", () => {
         const n = getRegister(instr.args[1]);
         if (m === n) {
           line = instr.args[2];
-          console.error(`Jump to ${line}`);
+          console.error(`${l}: Jump to I${line}`);
         } else {
-          console.error(`No jump`);
+          console.error(`${l}: No jump`);
         }
         break;
       case Instruction.M: {
         setRegister(instr.args[1], getRegister(instr.args[0]));
-        console.error(`R${instr.args[1]} set to ${getRegister(instr.args[0])}`);
+        console.error(
+          `${l}: R${instr.args[1]} set to ${getRegister(instr.args[0])}`,
+        );
         break;
       }
       case Instruction.S: {
         setRegister(instr.args[0], getRegister(instr.args[0]) + 1);
-        console.error(`R${instr.args[0]} set to ${getRegister(instr.args[0])}`);
+        console.error(
+          `${l}: R${instr.args[0]} set to ${getRegister(instr.args[0])}`,
+        );
         break;
       }
       case Instruction.Z: {
         setRegister(instr.args[0], 0);
-        console.error(`R${instr.args[0]} set to 0`);
+        console.error(`${l}: R${instr.args[0]} set to 0`);
         break;
       }
     }
